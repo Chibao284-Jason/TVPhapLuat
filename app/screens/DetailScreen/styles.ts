@@ -4,6 +4,7 @@ import { hasNotch, getStatusBarHeight } from '@freakycoder/react-native-helpers'
 import { colorGlobal } from '@config/colorGlobal';
 export type Styles = {
   container: ViewStyle;
+  backgroundDetail: (show: boolean) => ViewStyle;
   contentContainer: ViewStyle;
   // line: ViewStyle;
   viewFooter: ViewStyle;
@@ -20,9 +21,14 @@ export const styles: Styles = {
     flex: 1,
     backgroundColor: colorGlobal.backgroundGlobal
   },
+  backgroundDetail: (show) => ({
+    flex: 1,
+    backgroundColor: !show ? colorGlobal.backgroundGlobal : colorGlobal.backgroundModal
+  }),
   contentContainer: {
     flex: 1,
-    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginHorizontal: 10
   },
 
   viewFooter: {

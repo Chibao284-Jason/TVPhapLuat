@@ -46,6 +46,34 @@ const ModalFontFamily = (props: IModalFontFamilyProps) => {
       id: 1,
       font: 'Arial',
     },
+    {
+      id: 2,
+      font: 'Courier New',
+    },
+    {
+      id: 3,
+      font: 'Times New Roman',
+    },
+    {
+      id: 4,
+      font: 'Zocial',
+    },
+    {
+      id: 5,
+      font: 'Rubik',
+    },
+    {
+      id: 6,
+      font: 'Lato',
+    },
+    {
+      id: 7,
+      font: 'Open Sans',
+    },
+    {
+      id: 8,
+      font: 'Userway Dyslexia Font Medium',
+    },
   ];
 
   return (

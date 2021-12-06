@@ -76,8 +76,8 @@ export const colors = {
   deepCerulean: '#03889A',
   easternBlue: '#22A6A0',
   allports: "#006F9C",
-  milanoRed: '#B3110D'
-
+  milanoRed: '#B3110D',
+  grayApprox: '#888888'
 };
 
 
@@ -98,6 +98,7 @@ export const colorGlobal = {
 
   //BACKGROUND
   backgroundGlobal: colors.white,
+  backgroundModal: colors.grayApprox,
   // lineColor: colors.gray1,
   lineColor: colors.athensGray,
   focusLineTab: colors.light,

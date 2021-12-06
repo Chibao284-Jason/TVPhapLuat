@@ -63,7 +63,6 @@ const ModalTheme = (props: IModalThemeProps) => {
           contentContainerStyle={{
             flexDirection: 'row',
             alignItems: 'center',
-            marginRight: 15,
           }}
           horizontal={true}
           data={dataColors}

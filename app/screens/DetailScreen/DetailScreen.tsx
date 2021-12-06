@@ -3,11 +3,9 @@ import {View, Text, TouchableOpacity, StatusBar} from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {
   ModalTick,
-  ModalBrightness,
   ModalFontsize,
   ModalTheme,
   ModalFontFamily,
-  ModalReport,
 } from '@components/ModalComponent';
 import {styles} from './styles';
 import {useNavigation, useRoute} from '@react-navigation/native';
@@ -74,11 +72,18 @@ const DetailScreen = () => {
   }, [isLoading]);
 
   const refRBSheet = useRef<any>();
+  const [showModal, setShowModal] = useState(false);
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, styles.backgroundDetail(showModal)]}>
       {!hasNotch() && <StatusBar hidden={true} />}
       {!isLoading ? (
         <HeaderDetail
+          styleHeader={{
+            backgroundColor: !showModal
+              ? colorGlobal.backgroundGlobal
+              : colorGlobal.backgroundModal,
+          }}
+          showModal={!showModal}
           isButtonLeft={true}
           isButtonCenter={true}
           title={dataDetailNews.cat_name}
@@ -90,7 +95,6 @@ const DetailScreen = () => {
           }}
           iconRightStyle={{width: 30, height: 20, resizeMode: 'stretch'}}
           buttonRightStyle={{
-            // marginRight: 20,
             padding: 5,
           }}
         />
@@ -105,8 +109,10 @@ const DetailScreen = () => {
         <RBSheet
           ref={refRBSheet}
           closeOnDragDown={true}
-          closeOnPressMask={false}
-          height={450}
+          closeOnPressMask={true}
+          height={400}
+          onClose={() => setShowModal(false)}
+          onOpen={() => setShowModal(true)}
           openDuration={150}
           closeDuration={150}
           animationType={'slide'}
@@ -115,6 +121,9 @@ const DetailScreen = () => {
               backgroundColor: colorGlobal.lineColor,
             },
             container: {borderRadius: 15},
+            wrapper: {
+              backgroundColor: 'transparent',
+            },
           }}>
           <View style={styles.viewModal}>
             <ModalTick
@@ -124,13 +133,7 @@ const DetailScreen = () => {
               colorTheme={colorTheme}
               items={[itemDetail] as IDataTick[]}
             />
-            <ModalTheme title={'Theme'} font={font} fontSize={fontSize} />
-            <ModalBrightness
-              title={'Độ sáng'}
-              font={font}
-              fontSize={fontSize}
-              colorSlider={colorTheme}
-            />
+            <ModalTheme title={'Màu sắc'} font={font} fontSize={fontSize} />
             <ModalFontsize
               title={'Cỡ chữ'}
               font={font}
@@ -141,11 +144,6 @@ const DetailScreen = () => {
               font={font}
               fontSize={fontSize}
             />
-            {/* <ModalReport
-            title={'Báo cáo nội dung bài báo'}
-            font={font}
-            fontSize={fontSize}
-          /> */}
           </View>
           <View style={styles.viewFooter}>
             <ViewLineComponent />

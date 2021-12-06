@@ -64,13 +64,13 @@ export const styles: Styles = {
   buttonFont: color => ({
     backgroundColor: color ? color : colorGlobal.buttonFont,
     borderRadius: 20,
-    marginHorizontal: 5,
+    marginLeft: 5,
     flex: 1,
   }),
   labelFonts: (font) => ({
     color: colorGlobal.textWhite,
     fontSize: 18,
-    margin: 10,
+    padding: 10,
     fontWeight: '300',
     fontFamily: font ? font : 'Arial',
   }),
@@ -86,6 +86,5 @@ export const styles: Styles = {
   }),
   viewButtonFont: {
     justifyContent: 'center',
-    flexDirection: 'row',
   }
 };

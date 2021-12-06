@@ -14,6 +14,11 @@
 		3353200E67E244ACAE8B12C4 /* Bookerly Bold Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 462DAC4423114D2E9C9E14E6 /* Bookerly Bold Italic.ttf */; };
 		36A9A18C6A804E1995B0C042 /* Bookerly Display Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ED2A056FFA74BEE97331450 /* Bookerly Display Italic.ttf */; };
 		3934CD9718DB49879F01356F /* Bookerly Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E188E3696D7C455EA1C10796 /* Bookerly Italic.ttf */; };
+		587987DD275E195A00F13308 /* RubikRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BFA233EAA0A421B80D6784A /* RubikRegular.ttf */; };
+		5879882C275E1B1900F13308 /* Larsseit.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 862543B698E94983A7693092 /* Larsseit.ttf */; };
+		58798834275E1B5E00F13308 /* LatoRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97F5B78720B347E19187623A /* LatoRegular.ttf */; };
+		58798839275E1C8500F13308 /* OpenSansRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8605B7E6F2C4E6C815FB8DA /* OpenSansRegular.ttf */; };
+		5879883D275E1DF300F13308 /* UserwayDyslexiaFontMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5879883C275E1DF300F13308 /* UserwayDyslexiaFontMedium.ttf */; };
 		58B49D632759FD1A0091C757 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58B49D622759FD1A0091C757 /* BootSplash.storyboard */; };
 		5E5F6F16C73D48CFAF939EAF /* Bookerly Display.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1A67B4D67B84AB985A8AE8B /* Bookerly Display.ttf */; };
 		6172F2D35A4C3AA820D92908 /* libPods-TvPhapLuat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-TvPhapLuat.a */; };
@@ -67,6 +72,8 @@
 		462DAC4423114D2E9C9E14E6 /* Bookerly Bold Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Bold Italic.ttf"; path = "../app/assets/fonts/Bookerly Bold Italic.ttf"; sourceTree = "<group>"; };
 		472BAB093E694C97A5DC1EA9 /* UserwayDyslexiaFontBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = UserwayDyslexiaFontBold.ttf; path = ../app/assets/fonts/UserwayDyslexiaFontBold.ttf; sourceTree = "<group>"; };
 		4E031A93B26C4BEEAB7F4F44 /* LarsseitLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LarsseitLight.ttf; path = ../app/assets/fonts/LarsseitLight.ttf; sourceTree = "<group>"; };
+		587987E8275E19C200F13308 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../app/assets/fonts; sourceTree = "<group>"; };
+		5879883C275E1DF300F13308 /* UserwayDyslexiaFontMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = UserwayDyslexiaFontMedium.ttf; path = ../app/assets/fonts/UserwayDyslexiaFontMedium.ttf; sourceTree = "<group>"; };
 		58B49D622759FD1A0091C757 /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = TvPhapLuat/BootSplash.storyboard; sourceTree = "<group>"; };
 		5923E190A2D74E4384F21E6A /* Bookerly Display Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bookerly Display Bold.ttf"; path = "../app/assets/fonts/Bookerly Display Bold.ttf"; sourceTree = "<group>"; };
 		5AA247E3D301434CBA134E02 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
@@ -187,6 +194,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				5879883C275E1DF300F13308 /* UserwayDyslexiaFontMedium.ttf */,
+				587987E8275E19C200F13308 /* fonts */,
 				13B07FAE1A68108700A75B9A /* TvPhapLuat */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* TvPhapLuatTests */,
@@ -380,6 +389,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5879883D275E1DF300F13308 /* UserwayDyslexiaFontMedium.ttf in Resources */,
+				58798839275E1C8500F13308 /* OpenSansRegular.ttf in Resources */,
+				58798834275E1B5E00F13308 /* LatoRegular.ttf in Resources */,
+				5879882C275E1B1900F13308 /* Larsseit.ttf in Resources */,
+				587987DD275E195A00F13308 /* RubikRegular.ttf in Resources */,
 				58B49D632759FD1A0091C757 /* BootSplash.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3353200E67E244ACAE8B12C4 /* Bookerly Bold Italic.ttf in Resources */,

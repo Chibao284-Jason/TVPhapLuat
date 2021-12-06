@@ -8,7 +8,7 @@ type Styles = {
   viewHeader: ViewStyle
   viewButton: ViewStyle
   imgBanner: ImageStyle
-  line: ViewStyle
+  line: (show: boolean) => ViewStyle
 }
 export const styles: Styles = {
   container: {},
@@ -36,9 +36,9 @@ export const styles: Styles = {
     justifyContent: 'center',
     alignItems: 'center',
   },
-  line: {
+  line: (show) => ({
     width: `100%`,
-    borderBottomColor: colorGlobal.lineColor,
+    borderBottomColor: show ? colorGlobal.lineColor : colorGlobal.backgroundModal,
     borderBottomWidth: 1,
-  },
+  }),
 };

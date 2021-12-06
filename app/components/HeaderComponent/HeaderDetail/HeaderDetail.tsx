@@ -27,8 +27,10 @@ interface IHeaderDetailProps {
   iconRightStyle?: ImageStyle;
   buttonLeftStyle?: ViewStyle;
   buttonRightStyle?: ViewStyle;
+  styleHeader?: ViewStyle;
   title?: string;
   labelRight?: string;
+  showModal: boolean;
 }
 
 const HeaderDetail = (props: IHeaderDetailProps) => {
@@ -47,9 +49,11 @@ const HeaderDetail = (props: IHeaderDetailProps) => {
     title,
     isAvatar,
     labelRight,
+    styleHeader,
+    showModal,
   } = props;
   return (
-    <View style={styles.viewHeader}>
+    <View style={[styles.viewHeader, styleHeader]}>
       <View style={styles.viewButton}>
         {isButtonLeft && headerLeft && (
           <ButtonHeaderComponent
@@ -84,7 +88,7 @@ const HeaderDetail = (props: IHeaderDetailProps) => {
           />
         )}
       </View>
-      <View style={styles.line} />
+      <View style={styles.line(showModal)} />
     </View>
   );
 };

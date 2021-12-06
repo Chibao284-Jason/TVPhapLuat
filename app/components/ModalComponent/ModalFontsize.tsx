@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View, Image, ImageSourcePropType} from 'react-native';
+import {Text, View, Image, ImageSourcePropType, Dimensions} from 'react-native';
 import Slider from '@react-native-community/slider';
 import {styles} from './styles';
 import {useDispatch, useSelector} from 'react-redux';
@@ -44,9 +44,9 @@ const ModalFontsize = (props: ModalFontsizeProps) => {
           </Text>
         </View>
       </View>
-      <View style={{justifyContent: 'center'}}>
+      <View style={{justifyContent: 'center', alignItems: 'flex-end'}}>
         <Slider
-          style={{width: 200, height: 40}}
+          style={{width: 250, height: 40}}
           step={1}
           minimumValue={14}
           maximumValue={27}

@@ -1,3 +1,4 @@
+import { colorGlobal, colors } from "@config/colorGlobal";
 import { screenName } from "@navigation/screenName";
 export interface IDataTab {
   id: number;
@@ -38,21 +39,26 @@ interface IDataColorTheme {
 export const dataColorTheme: IDataColorTheme[] = [
   {
     id: 0,
-    color: '#5EBEBC',
+    color: colors.milanoRed,
     isSelect: false,
   },
   {
     id: 1,
-    color: '#262626',
+    color: '#5EBEBC',
     isSelect: false,
   },
   {
     id: 2,
-    color: '#FCBC99',
+    color: '#262626',
     isSelect: false,
   },
   {
     id: 3,
+    color: '#FCBC99',
+    isSelect: false,
+  },
+  {
+    id: 4,
     color: '#F58A92',
     isSelect: false,
   },
