@@ -30,7 +30,6 @@ export const styles: Styles = {
     marginHorizontal: 10,
     marginVertical: 10,
     borderColor: colorGlobal.lineColor,
-    padding: 5,
     flex: 1,
   },
   input: {

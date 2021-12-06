@@ -12,7 +12,7 @@ const config = {
   key: 'root',
   storage: AsyncStorage,
   blacklist: ['searchNewsReducer'],
-  whitelist: ['dataTickReducer', 'audioPlayReducer'],
+  whitelist: ['dataTickReducer', 'autoPlayVideoReducer'],
   debug: true, //to get useful logging
 };
 

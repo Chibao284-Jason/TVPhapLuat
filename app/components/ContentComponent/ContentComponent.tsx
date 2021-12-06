@@ -95,18 +95,13 @@ const ContentComponent = (props: IContentComponentProps) => {
     html: `${content}`,
   };
   let player = React.useRef;
-  const onPlayVideo = (event: OnPlaybackRateData) => {
-    if (event.playbackRate === 1) {
-      setPausedAudio(true);
-      setPaused(false);
-      return;
-    }
+  const onPlayVideo = (isPlay: boolean) => {
+    setPausedAudio(true);
+    setPaused(!isPlay);
   };
-  const onPlayAudio = (event: OnPlaybackRateData) => {
-    if (event.playbackRate === 1) {
-      setPaused(true);
-      setPausedAudio(false);
-    }
+  const onPlayAudio = (isPlayAudio: boolean) => {
+    setPausedAudio(!isPlayAudio);
+    setPaused(true);
   };
   const onEndBack = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     const windowHeight = Dimensions.get('window').height,
@@ -128,11 +123,7 @@ const ContentComponent = (props: IContentComponentProps) => {
         <>
           <VideoPlayer
             source={{uri: video}}
-            ref={ref => {
-              let player = ref;
-            }}
             controls={false}
-            onPlaybackRateChange={event => onPlayVideo(event)}
             paused={paused}
             style={styles.thumbnailVideo}
             ignoreSilentSwitch={'ignore'}
@@ -141,8 +132,14 @@ const ContentComponent = (props: IContentComponentProps) => {
             onEnterFullscreen={() => setFullScreen(true)}
             onExitFullscreen={() => setFullScreen(false)}
             disableBack={true}
-            onPlay={() => dispatch(Actions.autoPlayVideRequestActions(false))}
-            onPause={() => dispatch(Actions.autoPlayVideRequestActions(true))}
+            onPlay={() => {
+              onPlayVideo(true);
+              dispatch(Actions.autoPlayVideRequestActions(false));
+            }}
+            onPause={() => {
+              onPlayVideo(false);
+              dispatch(Actions.autoPlayVideRequestActions(true));
+            }}
           />
         </>
       )}
@@ -155,7 +152,10 @@ const ContentComponent = (props: IContentComponentProps) => {
           <View style={styles.viewSound}>
             <TouchableOpacity
               style={styles.thumbnailAudio}
-              onPress={() => setPausedAudio(!pausedAudio)}>
+              onPress={() => {
+                onPlayAudio(!pausedAudio);
+                setPausedAudio(!pausedAudio);
+              }}>
               <Image
                 source={require('../../assets/img/sound.png')}
                 style={styles.imgSound}
@@ -164,13 +164,9 @@ const ContentComponent = (props: IContentComponentProps) => {
                 {pausedAudio ? 'nghe tin' : 'đang phát'}
               </Text>
             </TouchableOpacity>
-            <Video
+            <VideoPlayer
               source={{uri: audio}}
-              ref={ref => {
-                let playerAudio = ref;
-              }}
               ignoreSilentSwitch={'ignore'}
-              onPlaybackRateChange={event => onPlayAudio(event)}
               controls={false}
               paused={pausedAudio}
               audioOnly={false}

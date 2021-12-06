@@ -4,7 +4,7 @@ export type IPlayVideo = {
   playVideo: boolean
 }
 const initialState: IPlayVideo = {
-  playVideo: true
+  playVideo: false
 }
 
 export const autoPlayVideoReducer = (state = initialState, action: IAutoVideoRequestActions) => {

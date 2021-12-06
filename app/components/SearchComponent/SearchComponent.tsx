@@ -78,11 +78,8 @@ const SearchComponent = (props: ISearchComponentProps) => {
         inputRef && inputRef.current && inputRef.current.focus();
       }, 450);
     }
-    console.log(tickNews);
   }, []);
   const submitSearch = (text: string) => {
-    console.log(text);
-
     dispatch(
       Actions.searchRequest({
         filters: {News_Keywords: '*' + text + '*'},
