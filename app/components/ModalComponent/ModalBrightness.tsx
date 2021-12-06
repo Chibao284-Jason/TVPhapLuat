@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import {Text, View, Image, ImageSourcePropType} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Text, View, Image, ImageSourcePropType, Platform} from 'react-native';
 import Slider from '@react-native-community/slider';
-import ScreenBrightness from 'react-native-screen-brightness';
 import {styles} from './styles';
 import {colorGlobal} from '@config/colorGlobal';
+import DeviceBrightness from '@adrianso/react-native-device-brightness';
 
 interface ModalBrightnessProps {
   title?: string;
@@ -14,11 +14,25 @@ interface ModalBrightnessProps {
 }
 
 const handleBrightness = async (value: number) => {
-  ScreenBrightness.setBrightness(value);
+  DeviceBrightness.setBrightnessLevel(value);
 };
 const ModalBrightness = (props: ModalBrightnessProps) => {
   const {title, image, font, fontSize, colorSlider} = props;
   const [sliderValue, setSliderValue] = useState(0);
+  useEffect(() => {
+    requestPer();
+  }, []);
+
+  const requestPer = async () => {
+    let brightness;
+    if (Platform.OS === 'android') {
+      brightness = await DeviceBrightness.getSystemBrightnessLevel();
+    } else {
+      brightness = await DeviceBrightness.getBrightnessLevel();
+    }
+    console.log('brightness', brightness);
+    setSliderValue(brightness);
+  };
 
   return (
     <View style={styles.container}>
