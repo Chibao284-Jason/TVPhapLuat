@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, StatusBar} from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {
   ModalTick,
@@ -29,6 +29,7 @@ import {
 } from '@models/actions/getDetailNews';
 import {IDataTick} from '@models/reducers/dataTick';
 import ImagePlaceholderDetail from '@components/ImagePlaceholder/ImagePlaceholderDetail';
+import {hasNotch} from '@freakycoder/react-native-helpers';
 
 interface IChangeFontReducer {
   ChangeFontReducer: IChangeThemeFontFamilyReducer &
@@ -75,6 +76,7 @@ const DetailScreen = () => {
   const refRBSheet = useRef<any>();
   return (
     <View style={styles.container}>
+      {!hasNotch() && <StatusBar hidden={true} />}
       {!isLoading ? (
         <HeaderDetail
           isButtonLeft={true}
@@ -86,8 +88,11 @@ const DetailScreen = () => {
           iconRight={{
             uri: 'https://icon-library.com/images/icon-other/icon-other-26.jpg',
           }}
-          iconRightStyle={{width: 20, height: 20, resizeMode: 'stretch'}}
-          buttonRightStyle={{marginRight: 20}}
+          iconRightStyle={{width: 30, height: 20, resizeMode: 'stretch'}}
+          buttonRightStyle={{
+            // marginRight: 20,
+            padding: 5,
+          }}
         />
       ) : null}
       {/* CONTENT COMPONENT */}

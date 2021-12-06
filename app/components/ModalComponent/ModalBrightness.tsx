@@ -30,7 +30,6 @@ const ModalBrightness = (props: ModalBrightnessProps) => {
     } else {
       brightness = await DeviceBrightness.getBrightnessLevel();
     }
-    console.log('brightness', brightness);
     setSliderValue(brightness);
   };
 

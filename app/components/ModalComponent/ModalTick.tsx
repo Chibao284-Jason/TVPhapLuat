@@ -44,8 +44,7 @@ const ModalTick = (props: ModalTickProps) => {
   const onShare = async () => {
     try {
       const result = await Share.share({
-        message:
-          'React Native | A framework for building native apps using React',
+        message: `${items[0].title}`,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
