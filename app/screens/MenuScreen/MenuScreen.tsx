@@ -14,6 +14,7 @@ const MenuScreen = (props: IMenuScreenProps) => {
   return (
     <View style={styles.container}>
       <HeaderDetail
+        lineHeader={true}
         isButtonLeft={true}
         isButtonCenter={true}
         isButtonRight={true}

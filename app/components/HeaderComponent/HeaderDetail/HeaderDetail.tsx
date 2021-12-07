@@ -30,7 +30,7 @@ interface IHeaderDetailProps {
   styleHeader?: ViewStyle;
   title?: string;
   labelRight?: string;
-  showModal: boolean;
+  lineHeader: boolean;
 }
 
 const HeaderDetail = (props: IHeaderDetailProps) => {
@@ -50,7 +50,7 @@ const HeaderDetail = (props: IHeaderDetailProps) => {
     isAvatar,
     labelRight,
     styleHeader,
-    showModal,
+    lineHeader,
   } = props;
   return (
     <View style={[styles.viewHeader, styleHeader]}>
@@ -88,7 +88,7 @@ const HeaderDetail = (props: IHeaderDetailProps) => {
           />
         )}
       </View>
-      <View style={styles.line(showModal)} />
+      <View style={styles.line(lineHeader)} />
     </View>
   );
 };

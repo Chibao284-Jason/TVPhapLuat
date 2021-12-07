@@ -21,7 +21,7 @@ export const styles: Styles = {
     top: 0,
   },
   viewHeader: {
-    paddingTop: hasNotch() ? getStatusBarHeight() : undefined,
+    paddingTop: hasNotch() ? getStatusBarHeight() : 15,
     backgroundColor: colorGlobal.backgroundGlobal
   },
   viewButton: {
@@ -38,7 +38,7 @@ export const styles: Styles = {
   },
   line: (show) => ({
     width: `100%`,
-    borderBottomColor: show ? colorGlobal.lineColor : colorGlobal.backgroundModal,
+    borderBottomColor: show ? colorGlobal.lineColor : 'transparent',
     borderBottomWidth: 1,
   }),
 };

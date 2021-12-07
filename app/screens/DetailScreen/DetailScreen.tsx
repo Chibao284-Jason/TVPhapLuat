@@ -83,7 +83,7 @@ const DetailScreen = () => {
               ? colorGlobal.backgroundGlobal
               : colorGlobal.backgroundModal,
           }}
-          showModal={!showModal}
+          lineHeader={!showModal}
           isButtonLeft={true}
           isButtonCenter={true}
           title={dataDetailNews.cat_name}

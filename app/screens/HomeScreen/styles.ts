@@ -47,7 +47,7 @@ export const styles: Styles = {
     alignItems: 'center',
   },
   viewHeader: {
-    paddingTop: hasNotch() ? getStatusBarHeight() : undefined,
+    paddingTop: hasNotch() ? getStatusBarHeight() : 15,
   },
   labelTabBar: {
     textAlign: 'center',

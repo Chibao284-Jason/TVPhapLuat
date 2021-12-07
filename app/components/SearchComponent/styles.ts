@@ -67,7 +67,7 @@ export const styles: Styles = {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: colorGlobal.backgroundGlobal,
-    paddingTop: hasNotch() ? getStatusBarHeight() - 10 : undefined,
+    paddingTop: hasNotch() ? getStatusBarHeight() - 10 : 15,
   },
   closeSearch: {
     fontSize: 18
