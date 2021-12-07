@@ -11,6 +11,7 @@ import ViewLineComponent from '@components/ViewLineComponent/ViewLineComponent';
 import {styles} from './styles';
 import {yesterday, lastM, lastW, lastY} from '@constants/dateConstant';
 import AutoHeightImage from 'react-native-auto-height-image';
+import {isTablet} from 'react-native-device-info';
 import 'moment/locale/vi';
 moment.updateLocale('vi', {
   calendar: {
@@ -77,7 +78,7 @@ const CardComponent = (props: CardComponentProps) => {
       <TouchableOpacity style={styles.container} onPress={onPress}>
         <View style={styles.imgThumbnail}>
           <AutoHeightImage
-            width={165}
+            width={isTablet() ? 500 : 165}
             source={imgUri as TSource}
             borderRadius={5}
           />

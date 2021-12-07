@@ -1,5 +1,6 @@
 import { ViewStyle, TextStyle, ImageStyle } from 'react-native'
 import { colorGlobal } from "@config/colorGlobal";
+import { isTablet } from "react-native-device-info";
 
 type Styles = {
   container: ViewStyle
@@ -66,7 +67,7 @@ export const styles: Styles = {
     width: '100%',
   },
   textLabel: {
-    fontSize: 20,
+    fontSize: isTablet() ? 40 : 20,
     flexWrap: 'wrap',
   },
   imgSource: {
