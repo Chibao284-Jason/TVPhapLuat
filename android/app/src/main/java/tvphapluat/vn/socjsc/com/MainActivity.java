@@ -1,4 +1,4 @@
-package com.soc_demoapp;
+package tvphapluat.vn.socjsc.com;
 
 import com.facebook.react.ReactActivity;
 

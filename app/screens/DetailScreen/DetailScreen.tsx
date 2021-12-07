@@ -120,7 +120,7 @@ const DetailScreen = () => {
             draggableIcon: {
               backgroundColor: colorGlobal.lineColor,
             },
-            container: {borderRadius: 15},
+            container: {borderTopLeftRadius: 15, borderTopRightRadius: 15},
             wrapper: {
               backgroundColor: 'transparent',
             },
