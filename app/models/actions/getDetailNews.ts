@@ -26,4 +26,5 @@ export interface IDataDetailNews {
   thumbnail: string
   id: string
   cat_name: string
+  link: string
 }

@@ -1,6 +1,7 @@
 import { getStatusBarHeight, hasNotch } from '@freakycoder/react-native-helpers';
 import { ViewStyle, TextStyle, ImageStyle } from 'react-native'
 import { colorGlobal } from "@config/colorGlobal";
+import { isTablet } from 'react-native-device-info';
 const HEADER_SIZE = 55;
 type Styles = {
   container: ViewStyle
@@ -18,7 +19,8 @@ type Styles = {
 export const styles: Styles = {
   container: {
     backgroundColor: colorGlobal.backgroundGlobal,
-    flex: 1
+    flex: 1,
+    marginTop: isTablet() ? 5 : undefined
   },
   containerBody: {
     flex: 1

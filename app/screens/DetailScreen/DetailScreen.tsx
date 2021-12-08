@@ -75,7 +75,6 @@ const DetailScreen = () => {
   const [showModal, setShowModal] = useState(false);
   return (
     <View style={[styles.container, styles.backgroundDetail(showModal)]}>
-      {!hasNotch() && <StatusBar hidden={true} />}
       {!isLoading ? (
         <HeaderDetail
           styleHeader={{

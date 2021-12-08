@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Animated,
   Linking,
+  SafeAreaView,
 } from 'react-native';
 import {screenName} from '@navigation/screenName';
 import ListNewsScreen from '@screens/ListNewsScreen/ListNewsScreen';
