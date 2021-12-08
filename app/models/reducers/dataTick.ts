@@ -10,4 +10,5 @@ export interface IDataTick {
   audio: string,
   thumbnail: string
   id: string
+  link: string
 }

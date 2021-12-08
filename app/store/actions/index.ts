@@ -6,6 +6,7 @@ import * as searchNewsAction from "./searchNewsAction";
 import * as getDetailNewsActions from "./getDetailNewsActions";
 import * as dataTickActions from "./dataTickAction";
 import * as autoPlayVideoActions from "./autoPlayVideoActions";
+import * as getBannerActions from "./getBannerActions";
 export const Actions = {
   ...listTabBarActions,
   ...listNewsActions,
@@ -13,5 +14,6 @@ export const Actions = {
   ...searchNewsAction,
   ...getDetailNewsActions,
   ...dataTickActions,
-  ...autoPlayVideoActions
+  ...autoPlayVideoActions,
+  ...getBannerActions
 }

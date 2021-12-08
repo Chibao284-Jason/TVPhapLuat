@@ -44,7 +44,7 @@ const ModalTick = (props: ModalTickProps) => {
   const onShare = async () => {
     try {
       const result = await Share.share({
-        message: `${items[0].title}`,
+        url: `${items[0].link}`,
         // url: `https://www.youtube.com/results?search_query=mu+vs+crystal+palace`,
       });
       if (result.action === Share.sharedAction) {

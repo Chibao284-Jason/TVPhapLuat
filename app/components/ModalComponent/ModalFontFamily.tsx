@@ -70,10 +70,10 @@ const ModalFontFamily = (props: IModalFontFamilyProps) => {
       id: 7,
       font: 'Open Sans',
     },
-    {
-      id: 8,
-      font: 'Userway Dyslexia Font Medium',
-    },
+    // {
+    //   id: 8,
+    //   font: 'Userway Dyslexia Font Medium',
+    // },
   ];
 
   return (

@@ -7,6 +7,7 @@ import * as searchNewsReducer from './searchNewsReducer'
 import * as detailNewsReducer from './detailNewsReducer'
 import * as dataTickReducer from './dataTickReducer'
 import * as autoPlayVideoReducer from './autoPlayVideoReducer'
+import * as bannerReducer from './bannerReducer'
 
 export default Object.assign(
   changeThemeReducers,
@@ -17,5 +18,6 @@ export default Object.assign(
   searchNewsReducer,
   detailNewsReducer,
   dataTickReducer,
-  autoPlayVideoReducer
+  autoPlayVideoReducer,
+  bannerReducer
 );

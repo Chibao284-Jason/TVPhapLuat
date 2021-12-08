@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
   TouchableOpacity,
+  Linking,
 } from 'react-native';
 import {} from 'react-native-elements';
 import {useDispatch, useSelector} from 'react-redux';
@@ -26,6 +27,8 @@ import {yesterday, lastM, lastW, lastY} from '@constants/dateConstant';
 import {useNavigation} from '@react-navigation/native';
 import {Actions} from '@store/actions';
 import {IPlayVideo} from '@store/reducers/autoPlayVideoReducer';
+import {IDataBannerState} from '@screens/HomeScreen/types';
+import Banner from '@components/Banner/Banner';
 interface IContentComponentProps {
   dataDetail: IDataDetailNews;
 }
@@ -52,6 +55,9 @@ const ContentComponent = (props: IContentComponentProps) => {
     (state: IAutoPlayVideoReducer) => state.autoPlayVideoReducer.playVideo,
   );
 
+  const bannerData = useSelector(
+    (state: IDataBannerState) => state.bannerReducer,
+  );
   const [paused, setPaused] = useState(true);
   useEffect(() => {
     setPaused(autoPlayVideoReducer);
@@ -114,6 +120,9 @@ const ContentComponent = (props: IContentComponentProps) => {
       }
     }
   };
+  const handlePress = useCallback(async (url: string) => {
+    await Linking.openURL(url);
+  }, []);
   return (
     <ScrollView
       style={styles.container}
@@ -140,6 +149,7 @@ const ContentComponent = (props: IContentComponentProps) => {
               onPlayVideo(false);
               dispatch(Actions.autoPlayVideRequestActions(true));
             }}
+            onError={e => console.log('eeeeeeeeeeeeeeeeeee', e)}
           />
         </>
       )}
@@ -176,6 +186,12 @@ const ContentComponent = (props: IContentComponentProps) => {
           </View>
         )}
       </View>
+      {bannerData.dataBanner && bannerData.dataBanner.bottom && (
+        <Banner
+          imgBanner={{uri: bannerData.dataBanner.bottom.image}}
+          onPressLink={() => handlePress(bannerData.dataBanner.bottom.link)}
+        />
+      )}
       <Text style={styles.textHeaderContent(font, fontSize)}>{desc}</Text>
       <RenderHtml
         baseStyle={styles.textBodyContent(font, fontSize)}

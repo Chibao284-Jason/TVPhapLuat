@@ -29,7 +29,7 @@ interface CardComponentProps {
   title?: string;
   timeCreated?: string | number;
   onPress: () => void;
-  onDeleteTick: () => void;
+  onDeleteTick?: () => void;
   countView: string | number;
   isTick?: boolean;
 }

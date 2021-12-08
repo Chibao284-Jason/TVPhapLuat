@@ -17,6 +17,7 @@ const ListNewsScreen = (props: IDataList) => {
     <SafeAreaView>
       <View style={styles.container}>
         <CardComponent
+          isTick={false}
           title={items.title}
           countView={items.count_view}
           imgUri={{

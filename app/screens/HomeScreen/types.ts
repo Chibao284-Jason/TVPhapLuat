@@ -1,3 +1,4 @@
+import { IDataBannerReducer } from "@store/reducers/bannerReducer";
 import { IListNewsCatsReducer } from "@store/reducers/listNewsCatsReducer";
 import { IListNewsReducer } from "@store/reducers/listNewsReducer";
 import { IListTabReducer } from "@store/reducers/listTabReducer";
@@ -25,4 +26,7 @@ export interface IListNewsState {
 
 export interface IListNewsCatsState {
   listNewsCatsReducer: IListNewsCatsReducer;
+}
+export interface IDataBannerState {
+  bannerReducer: IDataBannerReducer;
 }

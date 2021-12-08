@@ -1,5 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {View, FlatList, TouchableOpacity, Animated} from 'react-native';
+import React, {useCallback, useEffect, useState} from 'react';
+import {
+  View,
+  FlatList,
+  TouchableOpacity,
+  Animated,
+  Linking,
+} from 'react-native';
 import {screenName} from '@navigation/screenName';
 import ListNewsScreen from '@screens/ListNewsScreen/ListNewsScreen';
 import {Icon} from 'react-native-elements';
@@ -16,6 +22,7 @@ import {
   IListTabState,
   IListNewsState,
   IListNewsCatsState,
+  IDataBannerState,
 } from './types';
 import {IconMenu} from '@components/IconMenuComponent/IconMenu';
 import {TabBarItem} from '@components/TabBarItemComponent/TabBarItem';
@@ -26,6 +33,7 @@ import {
 } from '@constants/sizeDefault';
 import ImageViewLoading from '@components/ImagePlaceholder/index';
 import ImagePlaceholder from '@components/ImagePlaceholder/ImagePlaceholder';
+import Banner from '@components/Banner/Banner';
 const HomeScreen = (props: IHeaderComponentProps) => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
@@ -44,6 +52,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
         page: '1',
       }),
     );
+    dispatch(Actions.getBannerRequestActions());
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -121,6 +130,9 @@ const HomeScreen = (props: IHeaderComponentProps) => {
   const listNewsCatsReducer = useSelector(
     (state: IListNewsCatsState) => state.listNewsCatsReducer,
   );
+  const bannerData = useSelector(
+    (state: IDataBannerState) => state.bannerReducer,
+  );
   const dataCategories = listTabReducer.data.data;
   const isLoadingListTab = listTabReducer.isLoading;
   const isLoadingListNews = listNewsReducer.isLoading;
@@ -144,6 +156,9 @@ const HomeScreen = (props: IHeaderComponentProps) => {
     outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
     extrapolate: 'clamp',
   });
+  const handlePress = useCallback(async (url: string) => {
+    await Linking.openURL(url);
+  }, []);
 
   return (
     <>
@@ -154,9 +169,17 @@ const HomeScreen = (props: IHeaderComponentProps) => {
               <TouchableOpacity
                 style={styles.viewBanner}
                 onPress={() => {
-                  onPressCategories({id: 10000});
+                  // onPressCategories({id: 10000});
+                  const urlBanner = bannerData.dataBanner.top.link;
+                  if (urlBanner !== '') handlePress(urlBanner);
                 }}>
-                <HeaderBanner />
+                {bannerData.dataBanner &&
+                bannerData.dataBanner.top &&
+                bannerData.dataBanner.top.image ? (
+                  <HeaderBanner
+                    imgBanner={{uri: bannerData.dataBanner.top.image}}
+                  />
+                ) : null}
               </TouchableOpacity>
             </Animated.View>
             <View>
@@ -211,28 +234,38 @@ const HomeScreen = (props: IHeaderComponentProps) => {
             </View>
           </View>
           {!isLoadingListNewsCats && dataNews !== null ? (
-            <FlatList
-              style={styles.containerBody}
-              showsVerticalScrollIndicator={false}
-              onEndReachedThreshold={3}
-              scrollEventThrottle={10}
-              scrollEnabled={true}
-              onScroll={Animated.event(
-                [{nativeEvent: {contentOffset: {y: scrollY}}}],
-                {useNativeDriver: false},
+            <>
+              <FlatList
+                style={styles.containerBody}
+                showsVerticalScrollIndicator={false}
+                onEndReachedThreshold={3}
+                scrollEventThrottle={10}
+                scrollEnabled={true}
+                onScroll={Animated.event(
+                  [{nativeEvent: {contentOffset: {y: scrollY}}}],
+                  {useNativeDriver: false},
+                )}
+                data={!pressCats ? dataNews.rows : dataListNewsCats.rows}
+                onEndReached={({distanceFromEnd}) => {
+                  if (distanceFromEnd < 50) return;
+                  onLoadMore();
+                }}
+                ListFooterComponent={
+                  isLoadingMoreListNewsCats ? <ImagePlaceholder /> : null
+                }
+                renderItem={({item}) => {
+                  return <ListNewsScreen items={item} />;
+                }}
+              />
+              {bannerData.dataBanner && bannerData.dataBanner.bottom && (
+                <Banner
+                  imgBanner={{uri: bannerData.dataBanner.bottom.image}}
+                  onPressLink={() =>
+                    handlePress(bannerData.dataBanner.bottom.link)
+                  }
+                />
               )}
-              data={!pressCats ? dataNews.rows : dataListNewsCats.rows}
-              onEndReached={({distanceFromEnd}) => {
-                if (distanceFromEnd < 50) return;
-                onLoadMore();
-              }}
-              ListFooterComponent={
-                isLoadingMoreListNewsCats ? <ImagePlaceholder /> : null
-              }
-              renderItem={({item}) => {
-                return <ListNewsScreen items={item} />;
-              }}
-            />
+            </>
           ) : (
             <ImageViewLoading />
           )}

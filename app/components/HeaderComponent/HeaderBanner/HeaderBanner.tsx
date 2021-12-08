@@ -1,22 +1,25 @@
 import {colorGlobal} from '@config/colorGlobal';
 import * as React from 'react';
-import {StyleSheet, Image, StatusBar} from 'react-native';
-const HEADER_SIZE = 50;
+import {StyleSheet, Image, ImageSourcePropType} from 'react-native';
+const HEADER_SIZE = 55;
 
-interface IHeaderBannerProps {}
+interface IHeaderBannerProps {
+  imgBanner?: ImageSourcePropType;
+  onPressLink?: '';
+}
 
 const HeaderBanner = (props: IHeaderBannerProps) => {
+  const {imgBanner} = props;
   return (
     <>
-      <StatusBar hidden={false} />
       <Image
         style={styles.container}
         // imageStyle={{justifyContent: 'center', alignItems: 'center'}}
-        // source={{
-        //   // uri: 'https://baotintuc.xembao.vn/images/btt/tintuc.png',
-        //   uri: 'https://tvphapluat.vn/default/template/assets/img/logophapluat13.png',
-        // }}
-        source={require('../../../assets/img/logoBanner.png')}
+        source={
+          imgBanner !== ''
+            ? imgBanner
+            : require('../../../assets/img/logoBanner.png')
+        }
         resizeMode="contain"
       />
     </>
