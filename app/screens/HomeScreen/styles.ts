@@ -1,5 +1,5 @@
 import { getStatusBarHeight, hasNotch } from '@freakycoder/react-native-helpers';
-import { ViewStyle, TextStyle, ImageStyle } from 'react-native'
+import { ViewStyle, TextStyle, ImageStyle, Platform } from 'react-native'
 import { colorGlobal } from "@config/colorGlobal";
 import { isTablet } from 'react-native-device-info';
 const HEADER_SIZE = 55;
@@ -49,7 +49,7 @@ export const styles: Styles = {
     alignItems: 'center',
   },
   viewHeader: {
-    paddingTop: hasNotch() ? getStatusBarHeight() : 15,
+    paddingTop: hasNotch() ? getStatusBarHeight() : Platform.OS === 'android' ? 0 : 15,
   },
   labelTabBar: {
     textAlign: 'center',

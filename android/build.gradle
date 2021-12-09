@@ -13,8 +13,8 @@ buildscript {
         supportV4Version = '1.0.0' // Do not specify if using old libraries, specify '1.0.0' or similar for androidx.legacy:legacy-support-v4 dependency
     }
     repositories {
-        google()
         mavenCentral()
+        google()
     }
     dependencies {
         classpath("com.android.tools.build:gradle:4.2.2")
