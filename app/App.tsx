@@ -13,7 +13,7 @@ const {persistor, store} = configureStore();
 const App = (props: AppProps) => {
   return (
     <Provider store={store}>
-      <StatusBar hidden={false} />
+      <StatusBar barStyle={'dark-content'} />
       <PersistGate loading={null} persistor={persistor}>
         <Navigator />
       </PersistGate>
