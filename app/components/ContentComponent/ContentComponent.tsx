@@ -21,7 +21,6 @@ import {
 import {IDataDetailNews} from '@models/actions/getDetailNews';
 import {useWindowDimensions} from 'react-native';
 import RenderHtml from 'react-native-render-html';
-import Video, {OnPlaybackRateData} from 'react-native-video';
 import VideoPlayer from 'react-native-video-controls';
 import {Image} from 'react-native-elements/dist/image/Image';
 import {yesterday, lastM, lastW, lastY} from '@constants/dateConstant';
