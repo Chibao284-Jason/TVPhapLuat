@@ -8,6 +8,7 @@ import {
   NativeScrollEvent,
   TouchableOpacity,
   Linking,
+  Share,
 } from 'react-native';
 import {} from 'react-native-elements';
 import {useDispatch, useSelector} from 'react-redux';
@@ -74,6 +75,7 @@ const ContentComponent = (props: IContentComponentProps) => {
     desc,
     keywords,
     video,
+    link,
   } = dataDetail;
   let timeCreate = moment(datetime).fromNow();
   let dateTemp = moment(datetime);
@@ -123,10 +125,30 @@ const ContentComponent = (props: IContentComponentProps) => {
   const handlePress = useCallback(async (url: string) => {
     await Linking.openURL(url);
   }, []);
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        url: link,
+        // url: `https://www.youtube.com/results?search_query=mu+vs+crystal+palace`,
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <ScrollView
       style={styles.container}
       scrollEventThrottle={16}
+      showsVerticalScrollIndicator={false}
       onScroll={e => onEndBack(e)}>
       {video !== '' && (
         <>
@@ -149,57 +171,73 @@ const ContentComponent = (props: IContentComponentProps) => {
               onPlayVideo(false);
               dispatch(Actions.autoPlayVideRequestActions(true));
             }}
-            onError={e => console.log('eeeeeeeeeeeeeeeeeee', e)}
           />
         </>
       )}
-      <View>
-        <Text style={styles.headingTitle(font, fontSize)}>{title}</Text>
-      </View>
-      <View style={styles.viewAudio}>
-        <Text style={styles.textCreate(font, fontSize)}>{timeCreate}</Text>
-        {audio !== '' && (
-          <View style={styles.viewSound}>
-            <TouchableOpacity
-              style={styles.thumbnailAudio}
-              onPress={() => {
-                onPlayAudio(!pausedAudio);
-                setPausedAudio(!pausedAudio);
-              }}>
-              <Image
-                source={require('../../assets/img/sound.png')}
-                style={styles.imgSound}
+      <View style={styles.containerContent}>
+        <View>
+          <Text style={styles.headingTitle(font, fontSize)}>{title}</Text>
+        </View>
+        <View style={styles.viewAudio}>
+          <Text style={styles.textCreate(font, fontSize)}>{timeCreate}</Text>
+          {audio !== '' && (
+            <View style={styles.viewSound}>
+              <TouchableOpacity
+                style={styles.thumbnailAudio}
+                onPress={() => {
+                  onPlayAudio(!pausedAudio);
+                  setPausedAudio(!pausedAudio);
+                }}>
+                <Image
+                  source={require('../../assets/img/sound.png')}
+                  style={styles.imgSound}
+                />
+                <Text style={styles.textPause(font, fontSize)}>
+                  {pausedAudio ? 'nghe tin' : 'đang phát'}
+                </Text>
+              </TouchableOpacity>
+              <VideoPlayer
+                source={{uri: audio}}
+                ignoreSilentSwitch={'ignore'}
+                controls={false}
+                paused={pausedAudio}
+                audioOnly={false}
+                repeat={false}
+                style={styles.audioControl}
               />
-              <Text style={styles.textPause(font, fontSize)}>
-                {pausedAudio ? 'nghe tin' : 'đang phát'}
-              </Text>
-            </TouchableOpacity>
-            <VideoPlayer
-              source={{uri: audio}}
-              ignoreSilentSwitch={'ignore'}
-              controls={false}
-              paused={pausedAudio}
-              audioOnly={false}
-              repeat={false}
-              style={styles.audioControl}
-            />
-          </View>
+              <TouchableOpacity
+                style={styles.viewLabel}
+                onPress={() => onShare()}>
+                <Image
+                  source={require('../../assets/img/iconShare.png')}
+                  style={styles.imgIcon}
+                />
+                <View style={styles.title}>
+                  <Text style={styles.titleStyles(font, fontSize)}>
+                    Chia sẻ
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          )}
+        </View>
+
+        {bannerData.dataBanner && bannerData.dataBanner.bottom && (
+          <Banner
+            imgBanner={{uri: bannerData.dataBanner.bottom.image}}
+            onPressLink={() => handlePress(bannerData.dataBanner.bottom.link)}
+          />
         )}
-      </View>
-      {bannerData.dataBanner && bannerData.dataBanner.bottom && (
-        <Banner
-          imgBanner={{uri: bannerData.dataBanner.bottom.image}}
-          onPressLink={() => handlePress(bannerData.dataBanner.bottom.link)}
+
+        <Text style={styles.textHeaderContent(font, fontSize)}>{desc}</Text>
+        <RenderHtml
+          baseStyle={styles.textBodyContent(font, fontSize)}
+          systemFonts={[font]}
+          enableUserAgentStyles={true}
+          contentWidth={width}
+          source={source}
         />
-      )}
-      <Text style={styles.textHeaderContent(font, fontSize)}>{desc}</Text>
-      <RenderHtml
-        baseStyle={styles.textBodyContent(font, fontSize)}
-        systemFonts={[font]}
-        enableUserAgentStyles={true}
-        contentWidth={width}
-        source={source}
-      />
+      </View>
     </ScrollView>
   );
 };

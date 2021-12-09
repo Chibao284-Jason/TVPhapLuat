@@ -43,7 +43,6 @@ export const styles: Styles = {
   },
   textCreate: {
     color: colorGlobal.timeCreateColor,
-    marginLeft: 10,
   },
   imgThumbnail: {
     // width: 150,
@@ -78,7 +77,9 @@ export const styles: Styles = {
   countView: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginRight: 10,
+
   },
   imgSourceEyes: {
     width: 20,

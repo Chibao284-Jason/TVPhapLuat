@@ -3,16 +3,21 @@ import {ViewStyle, TextStyle, Dimensions, ImageStyle} from 'react-native';
 const width = Dimensions.get('window').width / 2 - 30;
 export type Styles = {
   container: ViewStyle;
+  containerContent: ViewStyle;
   thumbnailAudio: ViewStyle;
   thumbnailVideo: ViewStyle;
   audioControl: ViewStyle;
   viewAudio: ViewStyle;
   viewSound: ViewStyle;
+  viewLabel: ViewStyle;
+  title: ViewStyle;
   imgSound: ImageStyle;
+  imgIcon: ImageStyle;
   headingTitle: (font?: string, fontSize?: number) => TextStyle;
   textCreate: (font?: string, fontSize?: number) => TextStyle;
   textPause: (font?: string, fontSize?: number) => TextStyle;
   textHeaderContent: (font?: string, fontSize?: number) => TextStyle;
+  titleStyles: (font?: string, fontSize?: number) => TextStyle;
   textBodyContent: (font?: string, fontSize?: number) => any; // render HTML
 };
 const scale = (size: number, fontSize?: number) => {
@@ -22,7 +27,9 @@ const scale = (size: number, fontSize?: number) => {
   size;
 };
 export const styles: Styles = {
-  container: {padding: 10},
+  container: {
+    flex: 1,
+  },
 
   headingTitle: (font, fontSize) => ({
     fontSize: scale(30, fontSize),
@@ -58,8 +65,8 @@ export const styles: Styles = {
     lineHeight: scale(30, fontSize),
   }),
   thumbnailAudio: {
-    width: '100%',
-    height: 50,
+    // width: '100%',
+    // height: 50,
     alignItems: 'center',
     // backgroundColor: colorGlobal.textInputBg,
     // borderTopLeftRadius: 10,
@@ -78,10 +85,7 @@ export const styles: Styles = {
     marginBottom: 10,
   },
   audioControl: {
-    // width: '100%',
-    height: 50,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+    height: 0,
   },
   viewAudio: {
     flexDirection: 'row',
@@ -90,5 +94,24 @@ export const styles: Styles = {
   viewSound: {
     marginLeft: 15,
     flexDirection: 'row',
+    flex: 1,
+  },
+  containerContent: {
+    paddingHorizontal: 10,
+  },
+  viewLabel: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  imgIcon: {
+    width: 20,
+    height: 20,
+  },
+  titleStyles: (font, fontSize) => ({
+    fontFamily: font ? font : 'Arial',
+    fontSize: scale(14, fontSize),
+  }),
+  title: {
+    marginLeft: 10,
   },
 };

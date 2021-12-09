@@ -92,16 +92,18 @@ const CardComponent = (props: CardComponentProps) => {
             </View>
             <View style={styles.viewSource}>
               <View style={styles.viewLogo}>
-                <View style={styles.countView}>
-                  <Image
-                    source={{
-                      uri: 'https://icones.pro/wp-content/uploads/2021/05/icone-oeil-beurre-gris.png',
-                    }}
-                    style={styles.imgSourceEyes}
-                    resizeMode={'contain'}
-                  />
-                  <Text>{countView}</Text>
-                </View>
+                {countView !== 0 && countView !== '' && (
+                  <View style={styles.countView}>
+                    <Image
+                      source={{
+                        uri: 'https://icones.pro/wp-content/uploads/2021/05/icone-oeil-beurre-gris.png',
+                      }}
+                      style={styles.imgSourceEyes}
+                      resizeMode={'contain'}
+                    />
+                    <Text>{countView}</Text>
+                  </View>
+                )}
                 <Text style={styles.textCreate}>{timeCreate}</Text>
               </View>
             </View>

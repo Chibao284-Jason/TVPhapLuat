@@ -34,9 +34,7 @@ const Banner = (props: IHeaderBannerProps): any => {
               : require('../../assets/logo/bootsplash_logo_original.png')
           }
           resizeMode="contain">
-          <TouchableOpacity
-            style={{marginHorizontal: 5}}
-            onPress={() => setShowBanner(false)}>
+          <TouchableOpacity style={{}} onPress={() => setShowBanner(false)}>
             <Image
               source={require('../../assets/img/closeIcon.png')}
               style={styles.iconClose}
