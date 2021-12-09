@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TvPhapLuat</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">NAcVps98OHM1_XzzggnU0xLiPP8HaWU2EFy_d</string>
 </resources>
