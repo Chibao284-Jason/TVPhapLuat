@@ -1,8 +1,9 @@
+import Config from "@config/configApi";
 const axios = require('axios');
 export const getBannerApi = () => {
   const config = {
     method: 'get',
-    url: 'https://tvphapluat.vn/api/banner/',
+    url: `${Config.API_URL}/banner/`,
     headers: {},
   };
   return axios(config)

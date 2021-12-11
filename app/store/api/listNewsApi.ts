@@ -1,11 +1,12 @@
+import Config from "@config/configApi";
+
 const axios = require('axios');
-
-
 
 export const getListNewsApi = (params: { filters?: { News_Cat: string | number }, limit: string, page: string }) => {
   const config = {
     method: 'get',
-    url: 'https://tvphapluat.vn/api/posts/',
+    // url: 'https://tvphapluat.vn/api/posts/',
+    url: `${Config.API_URL}/posts/`,
     headers: {},
     params: params
   };

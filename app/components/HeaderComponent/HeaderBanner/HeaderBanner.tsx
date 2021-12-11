@@ -16,9 +16,10 @@ const HeaderBanner = (props: IHeaderBannerProps) => {
         style={styles.container}
         // imageStyle={{justifyContent: 'center', alignItems: 'center'}}
         source={
-          imgBanner !== ''
-            ? imgBanner
-            : require('../../../assets/img/logoBanner.png')
+          // imgBanner !== '' || imgBanner !== undefined
+          //   ? imgBanner
+          //   : require('../../../assets/img/logoBanner.png')
+          require('../../../assets/img/logoBanner.png')
         }
         resizeMode="contain"
       />

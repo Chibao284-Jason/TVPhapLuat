@@ -26,10 +26,11 @@ const Banner = (props: IHeaderBannerProps): any => {
         activeOpacity={1}
         style={{flexDirection: 'row'}}
         onPress={onPressLink}>
+        {console.log(imgBanner)}
         <ImageBackground
           style={styles.container}
           source={
-            imgBanner !== ''
+            imgBanner !== '' || imgBanner !== undefined
               ? imgBanner
               : require('../../assets/logo/bootsplash_logo_original.png')
           }

@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   Animated,
   Linking,
-  SafeAreaView,
 } from 'react-native';
 import {screenName} from '@navigation/screenName';
 import ListNewsScreen from '@screens/ListNewsScreen/ListNewsScreen';
@@ -45,6 +44,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
   const [idCatsCurrent, setIdCatsCurrent] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [dataNews, setDataNews] = useState<any>(null);
+  const [dataBanner, setDataBanner] = useState<any>(null);
   useEffect(() => {
     dispatch(Actions.getListTabRequest());
     dispatch(
@@ -180,7 +180,11 @@ const HomeScreen = (props: IHeaderComponentProps) => {
                   <HeaderBanner
                     imgBanner={{uri: bannerData.dataBanner.top.image}}
                   />
-                ) : null}
+                ) : (
+                  <HeaderBanner
+                    imgBanner={require('../../assets/img/logoBanner.png')}
+                  />
+                )}
               </TouchableOpacity>
             </Animated.View>
             <View>
@@ -258,14 +262,16 @@ const HomeScreen = (props: IHeaderComponentProps) => {
                   return <ListNewsScreen items={item} />;
                 }}
               />
-              {bannerData.dataBanner && bannerData.dataBanner.bottom && (
-                <Banner
-                  imgBanner={{uri: bannerData.dataBanner.bottom.image}}
-                  onPressLink={() =>
-                    handlePress(bannerData.dataBanner.bottom.link)
-                  }
-                />
-              )}
+              {bannerData.dataBanner &&
+                bannerData.dataBanner.bottom &&
+                bannerData.dataBanner.bottom.length !== 0 && (
+                  <Banner
+                    imgBanner={{uri: bannerData.dataBanner.bottom.image}}
+                    onPressLink={() =>
+                      handlePress(bannerData.dataBanner.bottom.link)
+                    }
+                  />
+                )}
             </>
           ) : (
             <ImageViewLoading />

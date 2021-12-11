@@ -1,3 +1,4 @@
+import Config from "@config/configApi";
 const axios = require('axios');
 const data = '';
 
@@ -6,7 +7,8 @@ const data = '';
 export function getListTabApi() {
   const config = {
     method: 'get',
-    url: 'https://tvphapluat.vn/api/cats/',
+    // url: 'https://tvphapluat.vn/api/cats/',
+    url: `${Config.API_URL}/cats/`,
     headers: {},
     data: data
   };

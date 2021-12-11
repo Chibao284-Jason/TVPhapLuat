@@ -1,11 +1,10 @@
+import Config from "@config/configApi";
 const axios = require('axios');
-
-
-
 export const getDetailNewsApi = (params: { id: string | number }) => {
   const config = {
     method: 'post',
-    url: 'https://tvphapluat.vn/api/post/',
+    // url: 'https://tvphapluat.vn/api/post/',
+    url: `${Config.API_URL}/post/`,
     headers: {},
     params: params
   };
