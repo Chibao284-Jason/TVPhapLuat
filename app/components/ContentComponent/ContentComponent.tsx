@@ -221,12 +221,14 @@ const ContentComponent = (props: IContentComponentProps) => {
           )}
         </View>
 
-        {bannerData.dataBanner && bannerData.dataBanner.bottom && (
-          <Banner
-            imgBanner={{uri: bannerData.dataBanner.bottom.image}}
-            onPressLink={() => handlePress(bannerData.dataBanner.bottom.link)}
-          />
-        )}
+        {bannerData.dataBanner &&
+          bannerData.dataBanner.bottom &&
+          bannerData.dataBanner.bottom.image !== undefined && (
+            <Banner
+              imgBanner={{uri: bannerData.dataBanner.bottom.image}}
+              onPressLink={() => handlePress(bannerData.dataBanner.bottom.link)}
+            />
+          )}
 
         <Text style={styles.textHeaderContent(font, fontSize)}>{desc}</Text>
         <RenderHtml

@@ -153,7 +153,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
   }, [isLoadingListNews]);
 
   const headerHeight = scrollY.interpolate({
-    inputRange: [0, HEADER_SCROLL_DISTANCE],
+    inputRange: [HEADER_MIN_HEIGHT, HEADER_SCROLL_DISTANCE],
     outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
     extrapolate: 'clamp',
   });
@@ -264,7 +264,7 @@ const HomeScreen = (props: IHeaderComponentProps) => {
               />
               {bannerData.dataBanner &&
                 bannerData.dataBanner.bottom &&
-                bannerData.dataBanner.bottom.length !== 0 && (
+                bannerData.dataBanner.bottom.image !== undefined && (
                   <Banner
                     imgBanner={{uri: bannerData.dataBanner.bottom.image}}
                     onPressLink={() =>

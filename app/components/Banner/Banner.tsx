@@ -21,16 +21,16 @@ const Banner = (props: IHeaderBannerProps): any => {
   const {imgBanner, onPressLink} = props;
   const [showBanner, setShowBanner] = React.useState(true);
   return (
-    showBanner && (
+    showBanner &&
+    imgBanner !== undefined && (
       <TouchableOpacity
         activeOpacity={1}
         style={{flexDirection: 'row'}}
         onPress={onPressLink}>
-        {console.log(imgBanner)}
         <ImageBackground
           style={styles.container}
           source={
-            imgBanner !== '' || imgBanner !== undefined
+            imgBanner !== '' || undefined
               ? imgBanner
               : require('../../assets/logo/bootsplash_logo_original.png')
           }
