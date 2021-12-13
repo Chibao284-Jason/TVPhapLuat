@@ -15,10 +15,11 @@ interface IHeaderBannerProps {
   imgBanner?: ImageSourcePropType;
   onPressLink?: () => void;
   onPressClose?: () => void;
+  showCloseIcon?: boolean;
 }
 
 const Banner = (props: IHeaderBannerProps): any => {
-  const {imgBanner, onPressLink} = props;
+  const {imgBanner, onPressLink, showCloseIcon = true} = props;
   const [showBanner, setShowBanner] = React.useState(true);
   return (
     showBanner &&
@@ -35,12 +36,14 @@ const Banner = (props: IHeaderBannerProps): any => {
               : require('../../assets/logo/bootsplash_logo_original.png')
           }
           resizeMode="contain">
-          <TouchableOpacity style={{}} onPress={() => setShowBanner(false)}>
-            <Image
-              source={require('../../assets/img/closeIcon.png')}
-              style={styles.iconClose}
-            />
-          </TouchableOpacity>
+          {showCloseIcon && (
+            <TouchableOpacity style={{}} onPress={() => setShowBanner(false)}>
+              <Image
+                source={require('../../assets/img/closeIcon.png')}
+                style={styles.iconClose}
+              />
+            </TouchableOpacity>
+          )}
         </ImageBackground>
       </TouchableOpacity>
     )
